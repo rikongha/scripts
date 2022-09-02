@@ -10,9 +10,9 @@ constraint = ['user logged in', 'user changed password', 'user logged off']
 def add_to_sessions(time, user, action):
     if time in sessions:
         if user in sessions[time]:
-            sessions[time][user] += action
+            sessions[time][user].append(action)
         else:
-            userdict[user] += action
+            userdict[user].append(action)
             sessions[time] = userdict
     else:
         sessions[time] = {user: [action]}
