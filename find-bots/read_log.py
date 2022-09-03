@@ -5,7 +5,7 @@ lines = logs.readlines()
 bots = set()
 sessions = {}
 userdict  = {}
-constraint = ['user logged in', 'user changed password', 'user logged off']
+constraint = {'user logged in', 'user changed password', 'user logged off'}
 
 def add_to_sessions(time, user, action):
     if time in sessions:
@@ -28,7 +28,7 @@ for line in lines:
 
 for time, usernames in sessions.items():
     for name, actions in usernames.items():
-        if(set(constraint)==(set(actions))):
+        if(constraint == (set(actions))):
             bots.add(name)
 
 print("\n".join(bots))
